@@ -1,0 +1,15 @@
+# Dependências
+node_modules/
+
+# Arquivos temporários do servidor (uploads e saídas)
+tmp/
+
+# Gravações e capturas do Playwright
+.playwright-mcp/
+
+# Sistema e editores
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

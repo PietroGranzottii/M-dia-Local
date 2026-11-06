@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MOV para MP4 · MídiaLocal</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-mode="convert">
+  <header class="top">
+    <a class="brand" href="/"><span class="dot"></span>MídiaLocal</a>
+    <nav>
+      <a href="/" aria-current="page">MOV → MP4</a>
+      <a href="/limpar">Remover rótulos de IA</a>
+      <a href="/documentos">Analisar documentos</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow">Conversor</p>
+      <h1>MOV para MP4,<br>sem perder qualidade.</h1>
+      <p class="lede">Sempre que dá, o vídeo é só <strong>reempacotado</strong>: os mesmos frames e o mesmo áudio, sem recompressão nenhuma. Ele só é recodificado, em qualidade visualmente sem perdas, quando o codec não funciona em MP4 (ProRes, por exemplo).</p>
+    </section>
+
+    <label class="drop" id="drop">
+      <input type="file" id="picker" accept=".mov,video/quicktime" multiple hidden>
+      <span class="drop-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M6 10l6-6 6 6"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+      </span>
+      <span class="drop-title">Solte seus arquivos .mov aqui</span>
+      <span class="drop-sub">ou clique para escolher · nada sai do seu computador</span>
+    </label>
+
+    <ul class="queue" id="queue" aria-live="polite"></ul>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

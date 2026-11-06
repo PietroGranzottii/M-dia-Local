@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analisar documentos · MídiaLocal</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-mode="documents">
+  <header class="top">
+    <a class="brand" href="/"><span class="dot"></span>MídiaLocal</a>
+    <nav>
+      <a href="/">MOV → MP4</a>
+      <a href="/limpar">Remover rótulos de IA</a>
+      <a href="/documentos" aria-current="page">Analisar documentos</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow">Detector de texto</p>
+      <h1>Indícios de IA<br>em textos e documentos.</h1>
+      <p class="lede">Mede o <strong>estilo do texto</strong> (variação das frases, expressões e conectivos típicos de IA) e lê os <strong>metadados</strong> de DOCX e PDF, como o programa que gerou o arquivo e o tempo de edição. Para DOCX e PDF, também gera uma cópia sem esses metadados, com o conteúdo intacto.</p>
+      <p class="note">O resultado é um indicador estatístico, não uma prova. Detectores erram, principalmente com textos curtos, formais ou escritos por quem usa uma segunda língua.</p>
+    </section>
+
+    <label class="drop" id="drop">
+      <input type="file" id="picker" accept=".docx,.pdf,.txt,application/pdf,text/plain,application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple hidden>
+      <span class="drop-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M6 10l6-6 6 6"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+      </span>
+      <span class="drop-title">Solte arquivos DOCX, PDF ou TXT aqui</span>
+      <span class="drop-sub">ou clique para escolher · nada sai do seu computador</span>
+    </label>
+
+    <form class="paste" id="paste">
+      <label for="paste-text">Ou cole um texto</label>
+      <textarea id="paste-text" rows="7" placeholder="Cole aqui o texto que você quer analisar…"></textarea>
+      <button type="submit" class="button">Analisar texto</button>
+    </form>
+
+    <ul class="queue" id="queue" aria-live="polite"></ul>
+  </main>
+
+  <script type="module" src="/documentos.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Remover rótulos de IA · MídiaLocal</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body data-mode="clean">
+  <header class="top">
+    <a class="brand" href="/"><span class="dot"></span>MídiaLocal</a>
+    <nav>
+      <a href="/">MOV → MP4</a>
+      <a href="/limpar" aria-current="page">Remover rótulos de IA</a>
+      <a href="/documentos">Analisar documentos</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow">Limpeza de metadados</p>
+      <h1>Tire os rótulos de IA<br>das fotos e vídeos.</h1>
+      <p class="lede">Remove as <strong>Credenciais de Conteúdo (C2PA)</strong>, o campo IPTC <em>DigitalSourceType</em>, XMP, EXIF e os prompts embutidos, que são o que faz as redes mostrarem a etiqueta "Feito com IA". Os pixels e o áudio não são tocados: a qualidade fica idêntica.</p>
+      <p class="note">Aceita JPG, PNG, WebP, MP4, MOV, M4V, WebM e MKV. Marcas d'água visíveis ou embutidas nos pixels (como o SynthID) não são alteradas.</p>
+    </section>
+
+    <label class="drop" id="drop">
+      <input type="file" id="picker" accept=".jpg,.jpeg,.png,.webp,.mp4,.mov,.m4v,.webm,.mkv,image/jpeg,image/png,image/webp,video/*" multiple hidden>
+      <span class="drop-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M6 10l6-6 6 6"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+      </span>
+      <span class="drop-title">Solte fotos ou vídeos aqui</span>
+      <span class="drop-sub">ou clique para escolher · nada sai do seu computador</span>
+    </label>
+
+    <ul class="queue" id="queue" aria-live="polite"></ul>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

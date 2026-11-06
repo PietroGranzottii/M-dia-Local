@@ -1,0 +1,12 @@
+# Normaliza quebras de linha no repositório
+* text=auto
+
+# Scripts do Windows precisam de CRLF para o cmd.exe interpretar rótulos e blocos.
+# Ficam guardados com CRLF (sem conversão) para funcionar também no Download ZIP.
+*.bat -text
+*.cmd -text
+
+# Binários
+*.png binary
+*.jpg binary
+*.svg text

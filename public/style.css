@@ -1,0 +1,283 @@
+:root {
+  --bg: #f4f1ea;
+  --surface: #fffdf8;
+  --ink: #1b1a17;
+  --muted: #6b675e;
+  --line: #ddd7ca;
+  --accent: #e2532d;
+  --accent-ink: #ffffff;
+  --ok: #2f7a4f;
+  --ok-bg: #e2f1e7;
+  --warn: #9a5a00;
+  --warn-bg: #fbeccf;
+  --error: #b42318;
+  --error-bg: #fde4e1;
+  --chip-bg: #eee9de;
+  --radius: 14px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141412;
+    --surface: #1d1c19;
+    --ink: #f1ede4;
+    --muted: #a19c90;
+    --line: #34322d;
+    --accent: #ff6a3d;
+    --accent-ink: #160b07;
+    --ok: #7fd3a0;
+    --ok-bg: #19301f;
+    --warn: #f3bf6b;
+    --warn-bg: #352a14;
+    --error: #ff8a7a;
+    --error-bg: #3a1a16;
+    --chip-bg: #2a2925;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 22px 20px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+nav { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+
+nav a {
+  padding: 7px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+nav a:hover { color: var(--ink); }
+nav a[aria-current="page"] { background: var(--ink); color: var(--bg); }
+
+main { max-width: 880px; margin: 0 auto; padding: 24px 20px 80px; }
+
+.intro { margin-bottom: 32px; }
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-family: "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+  font-size: clamp(34px, 6vw, 54px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.lede { max-width: 62ch; margin: 0; color: var(--muted); font-size: 17px; }
+.lede strong, .lede em { color: var(--ink); }
+
+.note {
+  max-width: 62ch;
+  margin: 14px 0 0;
+  padding-left: 12px;
+  border-left: 3px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 48px 20px;
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+
+.drop:hover, .drop.over { border-color: var(--accent); }
+.drop.over { background: color-mix(in srgb, var(--accent) 7%, var(--surface)); transform: scale(1.005); }
+.drop:focus-within { outline: 3px solid color-mix(in srgb, var(--accent) 50%, transparent); outline-offset: 3px; }
+
+.drop-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.drop-title { font-size: 19px; font-weight: 650; }
+.drop-sub { color: var(--muted); font-size: 14px; }
+
+.queue { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 12px; }
+
+.card {
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.card-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+
+.file-name {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.file-size { color: var(--muted); font-size: 13px; white-space: nowrap; }
+
+.status { margin-top: 4px; color: var(--muted); font-size: 14px; }
+.card[data-state="done"] .status { color: var(--ok); font-weight: 600; }
+.card[data-state="error"] .status { color: var(--error); font-weight: 600; }
+
+.bar { height: 6px; margin-top: 10px; border-radius: 999px; background: var(--chip-bg); overflow: hidden; }
+.bar span { display: block; height: 100%; width: 0; background: var(--accent); transition: width 0.3s ease; }
+
+.card-body:not(:empty) { display: grid; gap: 8px; margin-top: 14px; }
+
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 14px; }
+.row-text { color: var(--muted); }
+
+.badge {
+  padding: 2px 9px;
+  border-radius: 6px;
+  background: var(--chip-bg);
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.badge.ok { background: var(--ok-bg); color: var(--ok); }
+.badge.warn { background: var(--warn-bg); color: var(--warn); }
+.badge.error { background: var(--error-bg); color: var(--error); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.chip {
+  padding: 1px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 12px;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  color: var(--muted);
+}
+
+.button {
+  justify-self: start;
+  margin-top: 6px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.button:hover { background: var(--accent); color: var(--accent-ink); }
+
+@media (max-width: 560px) {
+  .top { padding: 16px; }
+  main { padding: 16px 16px 60px; }
+  .drop { padding: 36px 16px; }
+}
+
+/* ---------- Analisar documentos ---------- */
+
+.paste { display: grid; gap: 8px; margin-top: 20px; }
+.paste label { font-weight: 650; font-size: 15px; }
+
+.paste textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  resize: vertical;
+}
+
+.paste textarea:focus { outline: 3px solid color-mix(in srgb, var(--accent) 50%, transparent); outline-offset: 1px; }
+.paste .button { border: 0; cursor: pointer; font-family: inherit; margin-top: 0; }
+
+.meter { display: grid; gap: 8px; }
+.meter-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 14px; }
+.meter-score { font-size: 34px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.meter-bar { height: 10px; border-radius: 999px; background: var(--chip-bg); overflow: hidden; }
+.meter-bar span { display: block; height: 100%; background: var(--ok); }
+.meter-bar span[data-level="médio"] { background: var(--warn); }
+.meter-bar span[data-level="alto"] { background: var(--error); }
+
+.indicators { list-style: none; margin: 4px 0; padding: 0; display: grid; gap: 10px; }
+.indicator-head { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+.indicator-label { font-weight: 600; }
+.indicator-score { color: var(--muted); font-variant-numeric: tabular-nums; }
+.indicator-bar { height: 5px; margin-top: 4px; border-radius: 999px; background: var(--chip-bg); overflow: hidden; }
+.indicator-bar span { display: block; height: 100%; background: var(--ink); opacity: 0.7; }
+.indicator-detail { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+
+.meta { font-size: 14px; }
+.meta summary { cursor: pointer; font-weight: 600; }
+.meta dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 8px 0 0; }
+.meta dt { color: var(--muted); }
+.meta dd { margin: 0; overflow-wrap: anywhere; font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 13px; }
+
+@media (max-width: 560px) {
+  nav { width: 100%; border-radius: 14px; }
+  nav a { flex: 1; padding: 7px 8px; border-radius: 10px; text-align: center; line-height: 1.25; }
+  .meta dl { grid-template-columns: 1fr; }
+  .meta dd { margin-bottom: 6px; }
+}
